@@ -21,13 +21,27 @@
 </style>
 <style>
     .buttonItems {
-        display: flex;
         align-self: center;
+        display: flex;
+        position: relative;
+        width: 400px;
+        top:10px;
+        justify-content:space-around;
+        align-content: center;
+    }
+    .za-button {
+        width: 180px;
+    }
+    .bg_pic {
+        background-image: url("https://atts.w3cschool.cn/map.jpg");
+    }
+    .region {
+        background: rgba(256,256,256,0.7)!important;
     }
 </style>
-<body>
+<body class="bg_pic">
 <div class="w3-top" >
-    <div class="w3-bar w3-black  w3-card">
+    <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">主页</a>
         <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
@@ -43,23 +57,30 @@
         <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
     </div>
 </div>
-<div>
-    <div class="w3-container w3-content w3-center w3-padding-64">
-        <p></p>
+<div >
+    <div class="w3-container w3-content w3-center w3-padding-64" >
         <p></p>
     </div>
-    <div class="w3-container w3-content w3-center w3-padding-64 w3-card w3-white" style="max-width:800px;z-index:1;height:500px;margin-top: 40px">
-        <h1 class="w3-wide" style="height: 100px">欢迎来到世界</h1>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p style="margin-top: 20px"></p>
-        <div class="buttonItems" style="width: 200px;align-self: center">
-            <div style="width: 80px"><button class="w3-button w3-black" style="margin-left: auto"><a href="UserServlet">注册</a>></button></div>
-            <div style="width: 80px"><button class="w3-button w3-black" style="margin-right: auto">登录</button></div>
+    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="max-width:800px;height:500px;margin-top: 40px;flex-direction: row">
+        <h1 class="w3-wide" style="height: 100px;opacity: unset">登录</h1>
+
+        <form id="loginForm" action="GetUserByNameAndPwdServlet" method="post" style="max-width: 800px;width: 800px;display: flex;align-items: center;flex-direction: column">
+            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="账户名"></input>
+            <p></p>
+            <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" ></input>
+
+        </form>
+        <div class="buttonItems" style="width: 800px;margin-top: 50px;opacity: unset">
+            <button class="w3-button w3-black za-button" onclick="submitLoginInfo()">
+                确认登录
+            </button>
         </div>
     </div>
-
+    <script>
+        function submitLoginInfo(){
+            document.getElementById("loginForm").submit();
+        }
+    </script>
 
 </div>
 </body>
