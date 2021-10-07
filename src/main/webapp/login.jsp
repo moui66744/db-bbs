@@ -62,12 +62,13 @@
         <p></p>
     </div>
     <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="max-width:800px;height:500px;margin-top: 40px;flex-direction: row">
-        <h1 class="w3-wide" style="height: 100px;opacity: unset">登录</h1>
+        <h1 class="w3-wide" style="height: 100px;opacity: unset">登 录</h1>
 
         <form id="loginForm" action="GetUserByNameAndPwdServlet" method="post" style="max-width: 800px;width: 800px;display: flex;align-items: center;flex-direction: column">
-            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="账户名"></input>
-            <p></p>
-            <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" ></input>
+            <p>账户名</p>
+            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="账户名"/>
+            <p>密码</p>
+            <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" />
 
         </form>
         <div class="buttonItems" style="width: 800px;margin-top: 50px;opacity: unset">
