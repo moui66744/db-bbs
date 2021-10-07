@@ -6,4 +6,9 @@
     <select id="getAllUser" resultType="User">
         select * from user
     </select>
+    <select id="getUserByNameAndPsw" resultType="User">
+        select * from user
+        where user_name = #{userName} and
+              password = #{password}
+    </select>
 </mapper>

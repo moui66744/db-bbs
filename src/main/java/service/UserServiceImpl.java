@@ -20,4 +20,12 @@ public class UserServiceImpl implements UserService{
         }
         return allUser;
     }
+
+    @Override
+    public User getUserByNameAndPsw(String userName, String password) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.getUserByNameAndPsw(userName, password);
+        return user;
+    }
 }
