@@ -64,7 +64,7 @@
     <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="max-width:800px;height:auto;margin-top: 40px;flex-direction: column;display: flex;align-items:center">
         <h1 class="w3-wide" style="height: 100px;opacity: unset">注 册</h1>
 
-        <form id="registerForm" name="registerForm" action="registerServlet" method="post" style="max-width:800px;width:400px;display:flex;align-items:center; flex-direction:column">
+        <form id="registerForm" name="registerForm" action="RegisterServlet.do" method="post" style="max-width:800px;width:400px;display:flex;align-items:center; flex-direction:column">
             <p class="w3-opacity" style="align-self: flex-start">用户名</p>
             <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="用户名"/>
             <p class="w3-opacity" style="align-self: flex-start">性别</p>
@@ -102,17 +102,16 @@
                 alert("请输入用户名");
             else if (registerForm.sex.value == "")
                 alert("请选择性别");
-            else if (registerForm.password == "")
+            else if (registerForm.userPwd.value == "")
                 alert("请输入密码");
             else if (registerForm.nickName.value == "")
                 alert("请输入昵称");
             else if (registerForm.phone.value == "")
                 alert("请输入电话号码");
             else if (registerForm.userName.value == "admin")
-                location.href = "UserServlet";
+                location.href = "UserServlet.do";
             else
                 document.getElementById("registerForm").submit();
-
         }
     </script>
 

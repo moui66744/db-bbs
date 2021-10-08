@@ -11,4 +11,25 @@
         where user_name = #{userName} and
               password = #{password}
     </select>
+    <insert id="insertUser" parameterType="User">
+        insert into user (
+                          user_name,
+                          nick_name,
+                          password,
+                          phone,
+                          email,
+                          sex,
+                          position,
+                          register_date
+        ) values (
+                  #{user.userName},
+                  #{user.nickName},
+                  #{user.password},
+                  #{user.phone},
+                  #{user.email},
+                  #{user.sex},
+                  #{user.position},
+                  #{user.registerDate}
+        )
+    </insert>
 </mapper>

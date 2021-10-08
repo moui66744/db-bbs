@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/GetUserByNameAndPwdServlet")
+@WebServlet("/GetUserByNameAndPwdServlet.do")
 public class GetUserByNameAndPwdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
