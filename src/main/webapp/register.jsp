@@ -79,9 +79,11 @@
             <p class="w3-opacity" style="align-self: flex-start">密码</p>
             <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" />
             <p class="w3-opacity" style="align-self: flex-start">邮箱</p>
-            <input class="w3-input" name="email" style="max-width: 400px" type="text" placeholder="邮箱名"/>
+            <input class="w3-input" name="email" style="max-width: 400px" type="text" placeholder="邮箱"/>
             <p class="w3-opacity" style="align-self: flex-start">电话号码</p>
-            <input class="w3-input" name="phone" style="max-width: 400px" type="text" placeholder="电话"/>
+            <input class="w3-input" name="phone" style="max-width: 400px" type="text" placeholder="电话号码"/>
+            <p class="w3-opacity" style="align-self: flex-start">地址</p>
+            <input class="w3-input" name="position" style="max-width: 400px" type="text" placeholder="详细地址"/>
 
 
         </form>

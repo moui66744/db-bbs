@@ -61,13 +61,13 @@
     <div class="w3-container w3-content w3-center w3-padding-64" >
         <p></p>
     </div>
-    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="max-width:800px;height:500px;margin-top: 40px;flex-direction: row">
+    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="display:flex;align-items:center;max-width:800px;height:500px;margin-top: 40px;flex-direction: column">
         <h1 class="w3-wide" style="height: 100px;opacity: unset">登 录</h1>
 
-        <form id="loginForm" action="GetUserByNameAndPwdServlet" method="post" style="max-width: 800px;width: 800px;display: flex;align-items: center;flex-direction: column">
-            <p>账户名</p>
-            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="账户名"/>
-            <p>密码</p>
+        <form id="loginForm" action="GetUserByNameAndPwdServlet" method="post" style="width: 400px;display: flex;align-items: center;flex-direction: column">
+            <p style="align-self: flex-start">用户名</p>
+            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="用户名"/>
+            <p style="align-self: flex-start">密码</p>
             <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" />
 
         </form>
@@ -84,5 +84,17 @@
     </script>
 
 </div>
+<div class="w3-container w3-content w3-center w3-padding-64" >
+    <p></p>
+</div>
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">来自 <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
 </body>
 </html>
