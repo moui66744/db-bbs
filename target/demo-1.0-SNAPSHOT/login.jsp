@@ -30,7 +30,7 @@
         align-content: center;
     }
     .za-button {
-        width: 180px;
+        width: 160px;
     }
     .bg_pic {
         background-image: url("https://atts.w3cschool.cn/map.jpg");
@@ -71,15 +71,21 @@
             <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" />
 
         </form>
-        <div class="buttonItems" style="width: 800px;margin-top: 50px;opacity: unset">
-            <button class="w3-button w3-black za-button" onclick="submitLoginInfo()">
-                确认登录
-            </button>
+        <div class="buttonItems" style="width: 500px;margin-top: 50px;opacity: unset">
+            <button class="w3-button w3-black za-button" onclick="javascript:location.href='register.jsp'">没有帐号，注册</button>
+            <button class="w3-button w3-black za-button" onclick=submitLoginInfo()>确认登录</button>
         </div>
     </div>
     <script>
         function submitLoginInfo(){
-            document.getElementById("loginForm").submit();
+            if (loginForm.userName.value === ""){
+                alert("请填写用户名");
+            }
+            else if (loginForm.userPwd.value === ""){
+                alert("请填写密码");
+            }
+            else
+                document.getElementById("loginForm").submit();
         }
     </script>
 

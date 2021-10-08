@@ -30,7 +30,7 @@
         align-content: center;
     }
     .za-button {
-        width: 180px;
+        width: 160px;
     }
     .bg_pic {
         background-image: url("https://atts.w3cschool.cn/map.jpg");
@@ -39,6 +39,7 @@
         background: rgba(256,256,256,0.7)!important;
     }
 </style>
+<style ></style>
 <body class="bg_pic">
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
@@ -87,10 +88,9 @@
 
 
         </form>
-        <div class="buttonItems" style="width: 800px;margin-top: 50px;margin-bottom:40px;opacity: unset">
-            <button class="w3-button w3-black za-button" onclick="registerInfo()">
-                确认注册
-            </button>
+        <div class="buttonItems" style="width: 500px;margin-top: 50px;opacity: unset">
+            <button class="w3-button w3-black za-button" onclick="javascript:location.href='login.jsp'">已有帐号，登录</button>
+            <button class="w3-button w3-black za-button" onclick=registerInfo()>确认注册</button>
         </div>
     </div>
 
@@ -100,15 +100,15 @@
             //let registerForm = document.getElementsByName("registerForm");
             if (registerForm.userName.value === "")
                 alert("请输入用户名");
-            else if (registerForm.sex.value == "")
+            else if (registerForm.sex.value === "")
                 alert("请选择性别");
-            else if (registerForm.userPwd.value == "")
+            else if (registerForm.userPwd.value === "")
                 alert("请输入密码");
-            else if (registerForm.nickName.value == "")
+            else if (registerForm.nickName.value === "")
                 alert("请输入昵称");
-            else if (registerForm.phone.value == "")
+            else if (registerForm.phone.value === "")
                 alert("请输入电话号码");
-            else if (registerForm.userName.value == "admin")
+            else if (registerForm.userName.value === "admin")
                 location.href = "UserServlet.do";
             else
                 document.getElementById("registerForm").submit();
