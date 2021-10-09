@@ -6,12 +6,17 @@
 
 <mapper namespace="mapper.PostMapper">
     <resultMap id="post_user_topic" type="Post" autoMapping="true">
-        <id column="post_id" property="postId"/>
+        <id column="pid" property="postId"/>
+        <result column="title" property="postTitle"/>
+        <result column="context" property="postContext"/>
         <collection property="postTopic" ofType="Topic" autoMapping="true">
             <id column="topic_id" property="topicId"/>
         </collection>
         <collection property="author" ofType="User" autoMapping="true">
-            <id column="user_id" property="userId"/>
+            <id column="owner" property="postId"/>
         </collection>
     </resultMap>
+    <select id="getAllPost" resultMap="post_user_topic">
+        select * from post,user,topic where post.topic_id = topic.topic_id and post.user_id = user.user_id
+    </select>
 </mapper>

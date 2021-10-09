@@ -5,21 +5,12 @@ import java.sql.Date;
 public class Post {
     private int postId;
     private User author;
-    private Date postDate;
+    private Date postTime;
+    private String postTitle;
     private String postContext;
     private Topic postTopic;
     private int viewTimes;
     private int addToFavoriteTimes;
-
-    public Post(int postId, User author, Date postDate, String postContext, Topic postTopic, int viewTimes, int addToFavoriteTimes) {
-        this.postId = postId;
-        this.author = author;
-        this.postDate = postDate;
-        this.postContext = postContext;
-        this.postTopic = postTopic;
-        this.viewTimes = viewTimes;
-        this.addToFavoriteTimes = addToFavoriteTimes;
-    }
 
     public int getPostId() {
         return postId;
@@ -37,12 +28,21 @@ public class Post {
         this.author = author;
     }
 
-    public Date getPostDate() {
-        return postDate;
+    public Date getPostTime() {
+        return postTime;
     }
 
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
+    }
+
+
+    public String getPostTitle() {
+        return postTitle;
+    }
+
+    public void setPostTitle(String postTitle) {
+        this.postTitle = postTitle;
     }
 
     public String getPostContext() {
@@ -75,5 +75,18 @@ public class Post {
 
     public void setAddToFavoriteTimes(int addToFavoriteTimes) {
         this.addToFavoriteTimes = addToFavoriteTimes;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", author=" + author +
+                ", postDate=" + postTime +
+                ", postContext='" + postContext + '\'' +
+                ", postTopic=" + postTopic +
+                ", viewTimes=" + viewTimes +
+                ", addToFavoriteTimes=" + addToFavoriteTimes +
+                '}';
     }
 }

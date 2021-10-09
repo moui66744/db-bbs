@@ -5,12 +5,6 @@ public class Topic {
     private String topicName;
     private String topicDetail;
 
-    public Topic(int topicId, String topicName, String topicDetail) {
-        this.topicId = topicId;
-        this.topicName = topicName;
-        this.topicDetail = topicDetail;
-    }
-
     public int getTopicId() {
         return topicId;
     }

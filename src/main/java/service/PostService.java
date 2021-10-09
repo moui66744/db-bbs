@@ -1,9 +1,9 @@
-package mapper;
+package service;
 
 import bean.Post;
 
 import java.util.ArrayList;
 
-public interface PostMapper {
+public interface PostService {
     public ArrayList<Post> getAllPost();
 }
