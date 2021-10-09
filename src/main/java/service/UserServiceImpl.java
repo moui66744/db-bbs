@@ -28,4 +28,13 @@ public class UserServiceImpl implements UserService{
         User user = mapper.getUserByNameAndPsw(userName, password);
         return user;
     }
+
+    @Override
+    public int insertUser(User user) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int res = mapper.insertUser(user);
+        sqlSession.commit();
+        return res;
+    }
 }
