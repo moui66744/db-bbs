@@ -112,7 +112,6 @@
                 location.href = "UserServlet.do";
             else
                 document.getElementById("registerForm").submit();
-
         }
     </script>
 
