@@ -6,14 +6,12 @@
 
 <mapper namespace="mapper.PostMapper">
     <resultMap id="post_user_topic" type="Post" autoMapping="true">
-        <id column="pid" property="postId"/>
-        <result column="title" property="postTitle"/>
-        <result column="context" property="postContext"/>
+        <id column="post_id" property="postId"/>
+        <collection property="author" ofType="User" autoMapping="true">
+            <id column="user_id" property="userId"/>
+        </collection>
         <collection property="postTopic" ofType="Topic" autoMapping="true">
             <id column="topic_id" property="topicId"/>
-        </collection>
-        <collection property="author" ofType="User" autoMapping="true">
-            <id column="owner" property="postId"/>
         </collection>
     </resultMap>
     <select id="getAllPost" resultMap="post_user_topic">

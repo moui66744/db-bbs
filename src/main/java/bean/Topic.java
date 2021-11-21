@@ -3,7 +3,7 @@ package bean;
 public class Topic {
     private int topicId;
     private String topicName;
-    private String topicDetail;
+    private String detail;
 
     public int getTopicId() {
         return topicId;
@@ -13,8 +13,8 @@ public class Topic {
         return topicName;
     }
 
-    public String getTopicDetail() {
-        return topicDetail;
+    public String getDetail() {
+        return detail;
     }
 
     public void setTopicId(int topicId) {
@@ -25,7 +25,16 @@ public class Topic {
         this.topicName = topicName;
     }
 
-    public void setTopicDetail(String topicDetail) {
-        this.topicDetail = topicDetail;
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "topicId=" + topicId +
+                ", topicName='" + topicName + '\'' +
+                ", detail='" + detail + '\'' +
+                '}';
     }
 }
