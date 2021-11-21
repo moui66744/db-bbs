@@ -13,7 +13,14 @@ public class PostServiceImpl implements PostService{
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
         ArrayList<Post> allPost = postMapper.getAllPost();
+        return allPost;
+    }
 
+    @Override
+    public ArrayList<Post> getAllPostByTopicId(int topicId) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
+        ArrayList<Post> allPost = postMapper.getAllPostByTopicId(topicId);
         return allPost;
     }
 }
