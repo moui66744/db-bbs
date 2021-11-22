@@ -7,4 +7,5 @@ import java.util.ArrayList;
 public interface PostService {
     ArrayList<Post> getAllPost();
     ArrayList<Post> getAllPostByTopicId(int topicId);
+    int insertNewPost(Post post);
 }

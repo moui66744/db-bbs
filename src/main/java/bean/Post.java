@@ -8,9 +8,23 @@ public class Post {
     private Topic postTopic;
     private String title;
     private String context;
-    private Date postTime;
+    private String postTime;
     private int viewTimes;
     private int addToFavTimes;
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", author=" + author +
+                ", postTopic=" + postTopic +
+                ", title='" + title + '\'' +
+                ", context='" + context + '\'' +
+                ", postTime='" + postTime + '\'' +
+                ", viewTimes=" + viewTimes +
+                ", addToFavTimes=" + addToFavTimes +
+                '}';
+    }
 
     public int getPostId() {
         return postId;
@@ -52,11 +66,11 @@ public class Post {
         this.context = context;
     }
 
-    public Date getPostTime() {
+    public String getPostTime() {
         return postTime;
     }
 
-    public void setPostTime(Date postTime) {
+    public void setPostTime(String postTime) {
         this.postTime = postTime;
     }
 
@@ -74,19 +88,5 @@ public class Post {
 
     public void setAddToFavTimes(int addToFavTimes) {
         this.addToFavTimes = addToFavTimes;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "postId=" + postId +
-                ", author=" + author +
-                ", postTopic=" + postTopic +
-                ", title='" + title + '\'' +
-                ", context='" + context + '\'' +
-                ", postTime=" + postTime +
-                ", viewTimes=" + viewTimes +
-                ", addToFavTimes=" + addToFavTimes +
-                '}';
     }
 }

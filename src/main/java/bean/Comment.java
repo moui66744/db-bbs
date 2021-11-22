@@ -5,10 +5,22 @@ import java.sql.Date;
 public class Comment {
     private int commentId;
     private int postId;
-    private int userId;
+    private User user;
     private String context;
-    private Date commentTime;
+    private String commentTime;
     private Comment replyComment;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", postId=" + postId +
+                ", user=" + user +
+                ", context='" + context + '\'' +
+                ", commentTime='" + commentTime + '\'' +
+                ", replyComment=" + replyComment +
+                '}';
+    }
 
     public int getCommentId() {
         return commentId;
@@ -26,12 +38,12 @@ public class Comment {
         this.postId = postId;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getContext() {
@@ -42,11 +54,11 @@ public class Comment {
         this.context = context;
     }
 
-    public Date getCommentTime() {
+    public String getCommentTime() {
         return commentTime;
     }
 
-    public void setCommentTime(Date commentTime) {
+    public void setCommentTime(String commentTime) {
         this.commentTime = commentTime;
     }
 
@@ -56,17 +68,5 @@ public class Comment {
 
     public void setReplyComment(Comment replyComment) {
         this.replyComment = replyComment;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "commentId=" + commentId +
-                ", postId=" + postId +
-                ", userId=" + userId +
-                ", context='" + context + '\'' +
-                ", commentTime=" + commentTime +
-                ", replyComment=" + replyComment +
-                '}';
     }
 }

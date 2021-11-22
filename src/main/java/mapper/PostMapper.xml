@@ -29,4 +29,17 @@
             where post.topic_id = #{topicId} and
                   post.user_id = user.user_id
     </select>
+
+    <insert id="insertNewPost" parameterType="Post">
+        insert into post values (
+            null,
+            #{post.author.userId},
+            #{post.postTopic.topicId},
+            #{post.title},
+            #{post.context},
+            #{post.postTime},
+            0,
+            0
+        )
+    </insert>
 </mapper>
