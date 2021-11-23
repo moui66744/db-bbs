@@ -7,6 +7,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @WebServlet("/RegisterServlet.do")
 public class RegisterServlet extends HttpServlet {
@@ -20,8 +22,10 @@ public class RegisterServlet extends HttpServlet {
         user.setPhone(request.getParameter("phone"));
         user.setEmail(request.getParameter("email"));
         user.setPosition(request.getParameter("position"));
-        user.setRegisterDate(new java.sql.Date(new java.util.Date().getTime()));
-//        System.out.println(user);
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        user.setRegisterDate(df.format(ts));
+
         UserServiceImpl userService = new UserServiceImpl();
         int res = userService.insertUser(user);
         if (res == 0) {

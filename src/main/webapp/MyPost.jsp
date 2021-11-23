@@ -66,9 +66,9 @@
 
         <c:forEach items="${PostsOfMine}" var="Post" varStatus="status">
         <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
-            <p class="w3-justify " style="font-size:larger;" ><b>${Post.postTitle}</b></p>
+            <p class="w3-justify " style="font-size:larger;" ><b>${Post.title}</b></p>
             <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
-            <pre class="w3-justify">${Post.postContext}</pre>
+            <pre class="w3-justify">${Post.context}</pre>
             <div><p/></div>
             <button class="w3-button w3-black">Read More</button>
         </div>

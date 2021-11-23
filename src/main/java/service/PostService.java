@@ -5,5 +5,7 @@ import bean.Post;
 import java.util.ArrayList;
 
 public interface PostService {
-    public ArrayList<Post> getAllPost();
+    ArrayList<Post> getAllPost();
+    ArrayList<Post> getAllPostByTopicId(int topicId);
+    int insertNewPost(Post post);
 }

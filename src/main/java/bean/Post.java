@@ -5,12 +5,26 @@ import java.sql.Date;
 public class Post {
     private int postId;
     private User author;
-    private Date postTime;
-    private String postTitle;
-    private String postContext;
     private Topic postTopic;
+    private String title;
+    private String context;
+    private String postTime;
     private int viewTimes;
-    private int addToFavoriteTimes;
+    private int addToFavTimes;
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", author=" + author +
+                ", postTopic=" + postTopic +
+                ", title='" + title + '\'' +
+                ", context='" + context + '\'' +
+                ", postTime='" + postTime + '\'' +
+                ", viewTimes=" + viewTimes +
+                ", addToFavTimes=" + addToFavTimes +
+                '}';
+    }
 
     public int getPostId() {
         return postId;
@@ -28,37 +42,36 @@ public class Post {
         this.author = author;
     }
 
-    public Date getPostTime() {
-        return postTime;
-    }
-
-    public void setPostTime(Date postTime) {
-        this.postTime = postTime;
-    }
-
-
-    public String getPostTitle() {
-        return postTitle;
-    }
-
-    public void setPostTitle(String postTitle) {
-        this.postTitle = postTitle;
-    }
-
-    public String getPostContext() {
-        return postContext;
-    }
-
-    public void setPostContext(String postContext) {
-        this.postContext = postContext;
-    }
-
     public Topic getPostTopic() {
         return postTopic;
     }
 
     public void setPostTopic(Topic postTopic) {
         this.postTopic = postTopic;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public String getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(String postTime) {
+        this.postTime = postTime;
     }
 
     public int getViewTimes() {
@@ -69,24 +82,11 @@ public class Post {
         this.viewTimes = viewTimes;
     }
 
-    public int getAddToFavoriteTimes() {
-        return addToFavoriteTimes;
+    public int getAddToFavTimes() {
+        return addToFavTimes;
     }
 
-    public void setAddToFavoriteTimes(int addToFavoriteTimes) {
-        this.addToFavoriteTimes = addToFavoriteTimes;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "postId=" + postId +
-                ", author=" + author +
-                ", postDate=" + postTime +
-                ", postContext='" + postContext + '\'' +
-                ", postTopic=" + postTopic +
-                ", viewTimes=" + viewTimes +
-                ", addToFavoriteTimes=" + addToFavoriteTimes +
-                '}';
+    public void setAddToFavTimes(int addToFavTimes) {
+        this.addToFavTimes = addToFavTimes;
     }
 }

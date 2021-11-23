@@ -6,17 +6,40 @@
 
 <mapper namespace="mapper.PostMapper">
     <resultMap id="post_user_topic" type="Post" autoMapping="true">
-        <id column="pid" property="postId"/>
-        <result column="title" property="postTitle"/>
-        <result column="context" property="postContext"/>
+        <id column="post_id" property="postId"/>
+        <collection property="author" ofType="User" autoMapping="true">
+            <id column="user_id" property="userId"/>
+        </collection>
         <collection property="postTopic" ofType="Topic" autoMapping="true">
             <id column="topic_id" property="topicId"/>
-        </collection>
-        <collection property="author" ofType="User" autoMapping="true">
-            <id column="owner" property="postId"/>
         </collection>
     </resultMap>
     <select id="getAllPost" resultMap="post_user_topic">
         select * from post,user,topic where post.topic_id = topic.topic_id and post.user_id = user.user_id
     </select>
+
+    <resultMap id="post_user" type="Post" autoMapping="true">
+        <id column="post_id" property="postId"/>
+        <collection property="author" ofType="User" autoMapping="true">
+            <id column="user_id" property="userId"/>
+        </collection>
+    </resultMap>
+    <select id="getAllPostByTopicId" resultMap="post_user">
+        select * from post, user
+            where post.topic_id = #{topicId} and
+                  post.user_id = user.user_id
+    </select>
+
+    <insert id="insertNewPost" parameterType="Post">
+        insert into post values (
+            null,
+            #{post.author.userId},
+            #{post.postTopic.topicId},
+            #{post.title},
+            #{post.context},
+            #{post.postTime},
+            0,
+            0
+        )
+    </insert>
 </mapper>
