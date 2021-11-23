@@ -30,6 +30,13 @@
                   post.user_id = user.user_id
     </select>
 
+    <select id="getPostByPostId" resultMap="post_user_topic">
+        select * from post, user, topic
+            where post.user_id = user.user_id and
+                  post.topic_id = topic.topic_id and
+                  post.post_id = #{postId}
+    </select>
+
     <insert id="insertNewPost" parameterType="Post">
         insert into post values (
             null,

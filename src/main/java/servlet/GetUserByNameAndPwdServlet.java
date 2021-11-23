@@ -25,7 +25,7 @@ public class GetUserByNameAndPwdServlet extends HttpServlet {
         if (user == null) {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            request.setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

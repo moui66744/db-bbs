@@ -25,6 +25,14 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public Post getPostByPostId(int postId) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        PostMapper mapper = sqlSession.getMapper(PostMapper.class);
+        Post post = mapper.getPostByPostId(postId);
+        return post;
+    }
+
+    @Override
     public int insertNewPost(Post post) {
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         PostMapper mapper = sqlSession.getMapper(PostMapper.class);
