@@ -40,7 +40,7 @@
         background: rgba(256,256,256,0.7)!important;
     }
 </style>
-<body class="bg_pic">
+<body class="bg_pic" onpageshow="forwarding()">
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
@@ -88,4 +88,11 @@
     <p class="w3-medium">来自 <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 </body>
+<script>
+    function forwarding(){
+        if (${user != null} ) {
+            window.location.href = "PostServlet.do"
+        }
+    }
+</script>
 </html>
