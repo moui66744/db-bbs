@@ -37,4 +37,13 @@ public class UserServiceImpl implements UserService{
         sqlSession.commit();
         return res;
     }
+
+    @Override
+    public int insertFavorite(int userId, int postId) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int res = mapper.insertFavorite(userId, postId);
+        sqlSession.commit();
+        return res;
+    }
 }

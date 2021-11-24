@@ -40,4 +40,12 @@ public class PostServiceImpl implements PostService{
         sqlSession.commit();
         return res;
     }
+
+    @Override
+    public ArrayList<Post> getAllFavPostByUserId(int userId) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        PostMapper mapper = sqlSession.getMapper(PostMapper.class);
+        ArrayList<Post> allFavPost = mapper.getAllFavPostByUserId(userId);
+        return allFavPost;
+    }
 }

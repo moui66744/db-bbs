@@ -17,7 +17,10 @@ import java.util.Date;
 public class PostTest {
     public static void main(String args[]){
         PostServiceImpl postService = new PostServiceImpl();
-        Post post = postService.getPostByPostId(1);
-        System.out.println(post);
+        ArrayList<Post> allFavPost = postService.getAllFavPostByUserId(4);
+        for (Post post :
+                allFavPost) {
+            System.out.println(post);
+        }
     }
 }

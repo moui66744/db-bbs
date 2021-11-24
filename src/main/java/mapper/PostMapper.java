@@ -10,4 +10,5 @@ public interface PostMapper {
     ArrayList<Post> getAllPostByTopicId(int topicId);
     Post getPostByPostId(int postId);
     int insertNewPost(@Param("post") Post post);
+    ArrayList<Post> getAllFavPostByUserId(int userId);
 }
