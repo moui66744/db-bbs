@@ -28,7 +28,7 @@ public class GetPostAndCommentAndUserByPostIdServlet extends HttpServlet {
         CommentServiceImpl commentService = new CommentServiceImpl();
         ArrayList<Comment> allComment = commentService.getAllCommentAndUserByPostId(postId);
         request.setAttribute("allComment", allComment);
-//        request.getRequestDispatcher("MyPost.jsp").forward(request,response);
+        request.getRequestDispatcher("PostDetail.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

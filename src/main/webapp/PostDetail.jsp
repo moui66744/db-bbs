@@ -62,16 +62,32 @@
 <div>
     <div class="w3-container w3-content w3-center w3-padding-64w3-white"><p/></div>
     <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center">
-    <c:forEach items="${PostsOfMine}" var="Post" varStatus="status">
-        <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
-            <p class="w3-justify " style="font-size:larger;" ><b>${Post.title}</b></p>
-            <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
-            <pre class="w3-justify">${Post.context}</pre>
+
+    <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+        <p class="w3-justify " style="font-size:larger;" ><b>${post.title}</b></p>
+        <p class="w3-opacity" ><i>${post.postTime}</i>   <i>${post.author.userName}</i></p>
+        <pre class="w3-justify">${post.context}</pre>
+        <div><p/></div>
+    </div>
+
+    <h2>评论区</h2>
+    <div class="w3-content w3-container w3-padding-32" style="max-width:800px;" id="post1">
+        <p> </p>
+    </div>
+    <c:if test="${allComment == null}">
+        <div class="w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+            <pre class="w3-justify">还没有人评论</pre>
+        </div>
+    </c:if>
+    <button class="w3-button w3-black" ><a href="#">发表评论</a></button>
+    <c:forEach items="${allComment}" var="Comment" varStatus="status">
+        <div class="w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+            <p class="w3-justify " style="font-size:larger;" ><b>reply to ${post.title}</b></p>
+            <p class="w3-opacity" ><i>${Comment.commentTime}</i>   <i>${Comment.user.userName}</i></p>
+            <pre class="w3-justify">${Comment.context}</pre>
             <div><p/></div>
         </div>
-        <div class="w3-content w3-container w3-padding-32" style="max-width:800px;" id="post1">
-            <p/>
-        </div>
+    <hr>
     </c:forEach>
     </div>
 

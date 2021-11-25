@@ -71,7 +71,7 @@
             <div class="w3-justify">${Post.context.length()>100?(Post.context.substring(0,100)):Post.context}
                 ...</div>
             <div><p/></div>
-            <button class="w3-button w3-black">Read More</button>
+            <button class="w3-button w3-black" ><a href="${pageContext.request.contextPath}/GetPostAndCommentAndUserByPostIdServlet.do?postId=${Post.postId}">Read More</a></button>
         </div>
         <div class="w3-content w3-container w3-padding-32" style="max-width:800px;" id="post1">
             <p/>
