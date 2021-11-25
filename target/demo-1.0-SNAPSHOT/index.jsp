@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>注册或登录</title>
+    <title>首页</title>
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

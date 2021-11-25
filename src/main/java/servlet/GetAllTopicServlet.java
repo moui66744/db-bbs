@@ -20,8 +20,12 @@ public class GetAllTopicServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TopicServiceImpl topicService = new TopicServiceImpl();
         ArrayList<Topic> allTopic = topicService.getAllTopic();
+        for (Topic topic :
+                allTopic) {
+            System.out.println(topic);
+        }
         request.setAttribute("allTopic", allTopic);
-//        request.getRequestDispatcher("MyPost.jsp").forward(request,response);
+        request.getRequestDispatcher("Topic.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

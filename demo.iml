@@ -47,5 +47,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ibatis:ibator:1.2.1.681" level="project" />
     <orderEntry type="library" name="Maven: org.apache:apache:11" level="project" />
+    <orderEntry type="library" name="jquery-3.6.0" level="application" />
   </component>
 </module>

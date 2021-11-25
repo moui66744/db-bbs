@@ -24,8 +24,19 @@ public class GetAllPostByTopicIdServlet extends HttpServlet {
         int topicId = Integer.parseInt(request.getParameter("topicId"));
         PostService postService = new PostServiceImpl();
         ArrayList<Post> allPost = postService.getAllPostByTopicId(topicId);
+        TopicServiceImpl topicService = new TopicServiceImpl();
+        ArrayList<Topic> allTopic = topicService.getAllTopic();
+        Topic topic = null;
+        for (Topic op :
+                allTopic) {
+            if(topicId == op.getTopicId())
+                topic = op;
+        }
+        System.out.println(topic);
+        assert topic != null;
+        request.setAttribute("topic", topic.getTopicName());
         request.setAttribute("allPost", allPost);
-//        request.getRequestDispatcher("MyPost.jsp").forward(request,response);
+        request.getRequestDispatcher("Posts.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

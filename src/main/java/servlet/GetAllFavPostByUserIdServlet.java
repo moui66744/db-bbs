@@ -21,8 +21,8 @@ public class GetAllFavPostByUserIdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int userId = Integer.parseInt(request.getParameter("userId"));
-        int userId = 1;
+        int userId = Integer.parseInt(request.getParameter("userId"));
+//        int userId = 1;
         PostService postService = new PostServiceImpl();
         ArrayList<Post> allFavPost = postService.getAllFavPostByUserId(userId);
         for (Post post :
