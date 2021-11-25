@@ -21,11 +21,16 @@ public class GetAllFavPostByUserIdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = Integer.parseInt(request.getParameter("userId"));
+//        int userId = Integer.parseInt(request.getParameter("userId"));
+        int userId = 1;
         PostService postService = new PostServiceImpl();
         ArrayList<Post> allFavPost = postService.getAllFavPostByUserId(userId);
+        for (Post post :
+                allFavPost) {
+            System.out.println(post);
+        }
         request.setAttribute("allFavPost", allFavPost);
-//        request.getRequestDispatcher("MyPost.jsp").forward(request,response);
+        request.getRequestDispatcher("MyFavorite.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

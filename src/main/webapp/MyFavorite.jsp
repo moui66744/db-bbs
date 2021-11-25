@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <html>
 <head>
     <title>注册或登录</title>
@@ -31,7 +31,7 @@
         align-content: center;
     }
     .za-button {
-        width: 180px;
+        width: 160px;
     }
     .bg_pic {
         background-image: url("https://atts.w3cschool.cn/map.jpg");
@@ -39,14 +39,31 @@
     .region {
         background: rgba(256,256,256,0.7)!important;
     }
+    .Fav{
+        text-decoration:none;
+    }
+    .Fav:hover {
+        text-decoration: none;
+        color: red;
+    }
+    .Item{
+        background: rgba(255, 255, 255, 0.5);
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        border-radius: 25px; !important;
+    }
+    .Item:hover{
+        background: rgba(255, 255, 255, 0.9);
+    }
 </style>
+<style ></style>
 <body class="bg_pic">
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large">主页</a>
-        <a href="PostServlet.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
-        <a href="GetAllFavPostByUserIdServlet.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
+        <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
+        <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">个人中心</a>
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">更多 <i class="fa fa-caret-down"></i></button>
@@ -58,19 +75,27 @@
         <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
     </div>
 </div>
-<div >
-    <div class="w3-container w3-content w3-center w3-padding-64" >
-        <p></p>
-        <p></p>
-    </div>
-    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="max-width:800px;height:500px;margin-top: 40px;flex-direction: row">
-        <h1 class="w3-wide" style="height: 100px;margin-top:70px;opacity: unset">欢迎来到世界</h1>
+<div>
+    <div class="w3-container w3-content w3-center w3-padding-64w3-white"><p/></div>
+    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center">
+    <h2 class="w3-wide" style="margin-bottom: 40px"><b>我的收藏</b></h2>
 
-        <p style="margin-top: 20px"></p>
-        <div class="buttonItems" style="width: 800px;margin-top: 50px;opacity: unset">
-            <button class="w3-button w3-black za-button" onclick="javascript:location.href='register.jsp'">注册</button>
-            <button class="w3-button w3-black za-button" onclick="javascript:location.href='login.jsp'">登录</button>
+        <c:forEach items="${allFavPost}" var="Post" varStatus="status">
+        <div class="w3-card w3-content w3-container w3-padding-32 Item" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+            <a class="w3-justify Fav" style="" href="#"><b>${Post.title}</b></a>
+            <!--
+            <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
+            <pre class="w3-justify">${Post.context}</pre>
+            <div><p/></div>
+            <button class="w3-button w3-black">Read</button>
+            -->
         </div>
+        <div class="" style="height: 20px!important;" id="post1">
+            <p/>
+        </div>
+    </c:forEach>
+    </div>
+
     </div>
 
 
@@ -78,6 +103,9 @@
 <div class="w3-container w3-content w3-center w3-padding-64" >
     <p></p>
 </div>
+<script>
+
+</script>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
