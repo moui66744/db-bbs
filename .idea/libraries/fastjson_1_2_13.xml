@@ -1,14 +1,6 @@
 <component name="libraryTable">
   <library name="fastjson-1.2.13">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/fastjson-1.2.13.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsqlparser-1.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/jstl-1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/mybatis-3.4.6.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/mysql-connector-java-8.0.17.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagehelper-5.1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/standard.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

@@ -16,27 +16,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/GetAllPostByTopicIdServlet.do")
-public class GetAllPostByTopicIdServlet extends HttpServlet {
+@WebServlet("/GetAllFavPostByUserIdServlet.do")
+public class GetAllFavPostByUserIdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int topicId = Integer.parseInt(request.getParameter("topicId"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
+//        int userId = 1;
         PostService postService = new PostServiceImpl();
-        ArrayList<Post> allPost = postService.getAllPostByTopicId(topicId);
-        TopicServiceImpl topicService = new TopicServiceImpl();
-        ArrayList<Topic> allTopic = topicService.getAllTopic();
-        Topic topic = null;
-        for (Topic op :
-                allTopic) {
-            if(topicId == op.getTopicId())
-                topic = op;
+        ArrayList<Post> allFavPost = postService.getAllFavPostByUserId(userId);
+        for (Post post :
+                allFavPost) {
+            System.out.println(post);
         }
-        System.out.println(topic);
-        assert topic != null;
-        request.setAttribute("topic", topic.getTopicName());
-        request.setAttribute("allPost", allPost);
-        request.getRequestDispatcher("Posts.jsp").forward(request,response);
+        request.setAttribute("allFavPost", allFavPost);
+        request.getRequestDispatcher("MyFavorite.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

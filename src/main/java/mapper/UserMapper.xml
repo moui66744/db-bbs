@@ -32,4 +32,8 @@
                   #{user.registerDate}
         )
     </insert>
+
+    <insert id="insertFavorite">
+        insert into favorite values(#{postId}, #{userId});
+    </insert>
 </mapper>

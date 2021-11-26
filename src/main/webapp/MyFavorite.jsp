@@ -6,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <html>
 <head>
-    <title>登录</title>
+    <title>我的收藏</title>
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +39,24 @@
     .region {
         background: rgba(256,256,256,0.7)!important;
     }
+    .Fav{
+        text-decoration:none;
+    }
+    .Fav:hover {
+        text-decoration: none;
+        color: red;
+    }
+    .Item{
+        background: rgba(255, 255, 255, 0.5);
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        border-radius: 25px; !important;
+    }
+    .Item:hover{
+        background: rgba(255, 255, 255, 0.9);
+    }
 </style>
+<style ></style>
 <body class="bg_pic">
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
@@ -57,42 +75,37 @@
         <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
     </div>
 </div>
-<div >
-    <div class="w3-container w3-content w3-center w3-padding-64" >
-        <p></p>
-    </div>
-    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="display:flex;align-items:center;max-width:800px;height:500px;margin-top: 40px;flex-direction: column">
-        <h1 class="w3-wide" style="height: 100px;opacity: unset">登 录</h1>
+<div>
+    <div class="w3-container w3-content w3-center w3-padding-64w3-white"><p/></div>
+    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center">
+    <h2 class="w3-wide" style="margin-bottom: 40px"><b>我的收藏</b></h2>
 
-        <form id="loginForm" action="GetUserByNameAndPwdServlet.do" method="post" style="width: 400px;display: flex;align-items: center;flex-direction: column">
-            <p style="align-self: flex-start">用户名</p>
-            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="用户名"/>
-            <p style="align-self: flex-start">密码</p>
-            <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" />
-
-        </form>
-        <div class="buttonItems" style="width: 500px;margin-top: 50px;opacity: unset">
-            <button class="w3-button w3-black za-button" onclick="javascript:location.href='register.jsp'">没有帐号，注册</button>
-            <button class="w3-button w3-black za-button" onclick=submitLoginInfo()>确认登录</button>
+        <c:forEach items="${allFavPost}" var="Post" varStatus="status">
+        <div class="w3-card w3-content w3-container w3-padding-32 Item" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+            <a class="w3-justify Fav" style="" href="#"><b>${Post.title}</b></a>
+            <!--
+            <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
+            <pre class="w3-justify">${Post.context}</pre>
+            <div><p/></div>
+            <button class="w3-button w3-black">Read</button>
+            -->
         </div>
+        <div class="" style="height: 20px!important;" id="post1">
+            <p/>
+        </div>
+    </c:forEach>
     </div>
-    <script>
-        function submitLoginInfo(){
-            if (loginForm.userName.value === ""){
-                alert("请填写用户名");
-            }
-            else if (loginForm.userPwd.value === ""){
-                alert("请填写密码");
-            }
-            else
-                document.getElementById("loginForm").submit();
-        }
-    </script>
+
+    </div>
+
 
 </div>
 <div class="w3-container w3-content w3-center w3-padding-64" >
     <p></p>
 </div>
+<script>
+
+</script>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
