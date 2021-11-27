@@ -1,4 +1,4 @@
-<%--
+<%@ page import="bean.Post" %><%--
   Created by IntelliJ IDEA.
   User: zakia
   Date: 2021/10/6
@@ -69,9 +69,9 @@
         <pre class="w3-justify">${post.context}</pre>
         <div><p/></div>
     </div>
-
+    <HR align=center width=600 color=#AAAAAA SIZE=3>
     <h2>评论区</h2>
-    <div class="w3-content w3-container w3-padding-32" style="max-width:800px;" id="post1">
+    <div class="w3-content" style="max-width:800px;" id="post1">
         <p> </p>
     </div>
     <c:if test="${allComment == null}">
@@ -79,19 +79,32 @@
             <pre class="w3-justify">还没有人评论</pre>
         </div>
     </c:if>
-    <button class="w3-button w3-black" ><a href="#">发表评论</a></button>
+    <form id="CommentForm" action="InsertNewCommentServlet.do" method="post" style="width: 400px;display: flex;align-items: center;flex-direction: column">
+
+        <textarea class="w3-input" name="context" style="max-width: 700px;width:700px;height:200px" type="text" placeholder="发一条友善的评论" ></textarea>
+        <input type="hidden" name="replyId" value="0"/>
+        <input type="hidden" name="postId" value="${post.postId}"/>
+        <input type="hidden" name="userId" value="${user.userId}">
+    </form>
+    <button class="w3-button w3-black" onclick="submitComment()">发表评论</button>
+
+    <HR align=center width=600 color=#AAAAAA SIZE=3>
+    <div class="w3-content " style="max-width:800px;" id="post1">
+        <p> </p>
+    </div>
     <c:forEach items="${allComment}" var="Comment" varStatus="status">
-        <div class="w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+        <div class="w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="Comment${Comment.commentId}">
             <p class="w3-justify " style="font-size:larger;" ><b>reply to ${post.title}</b></p>
             <p class="w3-opacity" ><i>${Comment.commentTime}</i>   <i>${Comment.user.userName}</i></p>
             <pre class="w3-justify">${Comment.context}</pre>
             <div><p/></div>
+            <button class="w3-button w3-black" onclick="addCommet(this)" id="CommentButton${Comment.commentId}">回复</button>
+
         </div>
     <hr>
     </c:forEach>
     </div>
 
-    </div>
 
 
 </div>
@@ -99,16 +112,42 @@
     <p></p>
 </div>
 <script>
-    function getReplyIdName(id){
-        $.ajax({
-            type:"POST",
-            url:"getPostReply.do",
-            data:{replyId:id},
-            dataType:"json",
-            success:function (data){
-                $('#post'+'data.id').value = data.name;
-            }
-        });
+    function addCommentInput(){
+        alert("focus")
+    }
+    function addCommet(p){
+        if (p == null){
+            alert("No father")
+        }
+        var div = document.createElement("div");
+        div.innerHTML = "<input  type=text  class='w3-white w3-content w3-container w3-padding-32' style='width:600px;display: flex;flex-direction:column;align-items: baseline' placeholder='发表一条友善的评论' id =postCommentReply"+p.parentNode.id+ " onfocusout='deleteReplyRegion()'></<input>"
+        var blank = document.createElement("p");
+        p.parentNode.insertBefore(div,p);
+        p.parentNode.insertBefore(blank,p);
+        p.onclick = function (){
+            submitReply(this);
+        }
+        p.visible = false;
+        //id.visible = false;
+    }
+    function deleteReplyRegion(p){
+
+    }
+
+    function submitReply(p){
+        alert(p)
+        var content = document.getElementById('postCommentReply'+p.parent.id);
+        if (content == null)
+        {
+            alert("can not find comment")
+        }
+        if (content.value == null){
+            alert("评论不能为空")
+        }
+
+    }
+    function submitComment(p){
+        document.getElementById("CommentForm").submit();
     }
 </script>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">

@@ -46,7 +46,7 @@ public class InsertNewCommentServlet extends HttpServlet {
 
         CommentServiceImpl commentService = new CommentServiceImpl();
         int res = commentService.insertNewComment(comment);
-//        request.getRequestDispatcher("MyPost.jsp").forward(request,response);
+        request.getRequestDispatcher("GetPostAndCommentAndUserByPostIdServlet.do?postId="+postId).forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
