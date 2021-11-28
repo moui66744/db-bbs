@@ -17,7 +17,9 @@
     <select id="getAllPost" resultMap="post_user_topic">
         select * from post,user,topic where post.topic_id = topic.topic_id and post.user_id = user.user_id
     </select>
-
+    <select id="getPostByUserId" resultMap="post_user_topic">
+        select * from post,user,topic where post.topic_id = topic.topic_id and post.user_id = user.user_id and user.user_id = #{userId}
+    </select>
     <resultMap id="post_user" type="Post" autoMapping="true">
         <id column="post_id" property="postId"/>
         <collection property="author" ofType="User" autoMapping="true">

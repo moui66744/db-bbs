@@ -45,9 +45,9 @@
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">主页</a>
-        <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
-        <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
+        <a href="GetAllTopicServlet.do" class="w3-bar-item w3-button w3-padding-large">话题广场</a>
+        <a href="PostServlet.do?userId=${user.userId}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
+        <a href="GetAllFavPostByUserIdServlet.do?userId=${user.userId}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">个人中心</a>
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">更多 <i class="fa fa-caret-down"></i></button>
@@ -93,7 +93,7 @@
         <p> </p>
     </div>
     <c:forEach items="${allComment}" var="Comment" varStatus="status">
-        <div class="w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="Comment${Comment.commentId}">
+        <div class="w3-content w3-container w3-padding-32 w3-light-grey" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="Comment${Comment.commentId}">
             <p class="w3-justify " style="font-size:larger;" ><b>reply to ${post.title}</b></p>
             <p class="w3-opacity" ><i>${Comment.commentTime}</i>   <i>${Comment.user.userName}</i></p>
             <pre class="w3-justify">${Comment.context}</pre>
@@ -119,12 +119,16 @@
         if (p == null){
             alert("No father")
         }
-        var div = document.createElement("div");
-        div.innerHTML = "<input  type=text  class='w3-white w3-content w3-container w3-padding-32' style='width:600px;display: flex;flex-direction:column;align-items: baseline' placeholder='发表一条友善的评论' id =postCommentReply"+p.parentNode.id+ " onfocusout='deleteReplyRegion()'></<input>"
+        alert(p.parentNode.id)
+        var form = document.createElement("form");
+        form.id = p.parentNode.id + "form"
+        form.method = "post"
+        form.action = "InsertNewCommentServlet.do"
+        form.innerHTML ="<textarea class=‘w3-input w3-opacity w3-light-grey' name='context' style='max-width: 700px;width:600px;height:200px' type='text' placeholder='发一条友善的评论' ></textarea> <input type='hidden' name='replyId' value='" + p.parentNode.id.substring(7)+"' /> <input type='hidden' name='postId' value='${post.postId}'/> <input type='hidden' name='userId' value='${user.userId}'>"
         var blank = document.createElement("p");
-        p.parentNode.insertBefore(div,p);
+        p.parentNode.insertBefore(form,p);
         p.parentNode.insertBefore(blank,p);
-        p.onclick = function (){
+        p.onclick = function () {
             submitReply(this);
         }
         p.visible = false;
@@ -135,15 +139,8 @@
     }
 
     function submitReply(p){
-        alert(p)
-        var content = document.getElementById('postCommentReply'+p.parent.id);
-        if (content == null)
-        {
-            alert("can not find comment")
-        }
-        if (content.value == null){
-            alert("评论不能为空")
-        }
+        var button = document.getElementById(p.parentNode.id + "form")
+        button.submit();
 
     }
     function submitComment(p){

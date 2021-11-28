@@ -18,9 +18,9 @@
         select * from comment a
               left join comment b
                     on a.comment_id = b.reply_id
-              inner join user c
+              left join user c
                      on a.user_id = c.user_id
-              inner join user d
+              left join user d
                      on b.user_id = d.user_id
         where a.post_id = #{postId};
     </select>

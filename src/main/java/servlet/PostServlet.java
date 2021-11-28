@@ -18,8 +18,9 @@ import java.util.ArrayList;
 public class PostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int userId = Integer.parseInt(request.getParameter("userId"));
         PostService postService = new PostServiceImpl();
-        ArrayList<Post> postOfMine = postService.getAllPost();
+        ArrayList<Post> postOfMine = postService.getPostByUserId(userId);
         request.setAttribute("PostsOfMine",postOfMine);
         request.getRequestDispatcher("MyPost.jsp").forward(request,response);
     }

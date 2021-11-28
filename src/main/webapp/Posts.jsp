@@ -45,9 +45,9 @@
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">主页</a>
-        <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
-        <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
+        <a href="GetAllTopicServlet.do" class="w3-bar-item w3-button w3-padding-large">话题广场</a>
+        <a href="PostServlet.do?userId=${user.userId}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
+        <a href="GetAllFavPostByUserIdServlet.do?userId=${user.userId}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">个人中心</a>
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">更多 <i class="fa fa-caret-down"></i></button>
@@ -65,12 +65,13 @@
     <h2 class="w3-wide" style="margin-bottom: 40px"><b>${topic}</b></h2>
 
         <c:forEach items="${allPost}" var="Post" varStatus="status">
-        <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
+        <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" >
             <p class="w3-justify " style="font-size:larger;" ><b>${Post.title}</b></p>
             <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
-            <pre class="w3-justify">${Post.context}</pre>
+            <div class="w3-justify">${Post.context.length()>100?(Post.context.substring(0,100)):Post.context}
+                ...</div>
             <div><p/></div>
-            <button class="w3-button w3-black">Read More</button>
+            <button id="${Post.postId}" class="w3-button w3-black">Read More</button>
         </div>
         <div class="w3-content w3-container w3-padding-32" style="max-width:800px;" id="post1">
             <p/>
@@ -85,19 +86,13 @@
 <div class="w3-container w3-content w3-center w3-padding-64" >
     <p></p>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // function getReplyIdName(id){
-    //     $.ajax({
-    //         type:"POST",
-    //         url:"getPostReply.do",
-    //         data:{replyId:id},
-    //         dataType:"json",
-    //         success:function (data){
-    //             $('#post'+'data.id').value = data.name;
-    //         }
-    //     });
-    // }
+    $("button").click(function (){
+        window.location.href='GetPostAndCommentAndUserByPostIdServlet.do?postId='+this.id;
+    })
 </script>
+
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>

@@ -61,9 +61,9 @@
 <div class="w3-top" >
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">主页</a>
-        <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
-        <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
+        <a href="GetAllTopicServlet.do" class="w3-bar-item w3-button w3-padding-large">话题广场</a>
+        <a href="PostServlet.do?userId=${user.userId}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
+        <a href="GetAllFavPostByUserIdServlet.do?userId=${user.userId}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">个人中心</a>
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">更多 <i class="fa fa-caret-down"></i></button>
@@ -75,9 +75,10 @@
         <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
     </div>
 </div>
+</div>
 <div>
     <div class="w3-container w3-content w3-center w3-padding-64w3-white"><p/></div>
-    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center">
+    <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center; min-height:900px">
     <h2 class="w3-wide" style="margin-bottom: 40px"><b>我的收藏</b></h2>
 
         <c:forEach items="${allFavPost}" var="Post" varStatus="status">
@@ -98,11 +99,11 @@
 
     </div>
 
+    <div class="" style="height: 20px!important;" id="post1">
+        <p/>
+    </div>
+</div>
 
-</div>
-<div class="w3-container w3-content w3-center w3-padding-64" >
-    <p></p>
-</div>
 <script>
 
 </script>
