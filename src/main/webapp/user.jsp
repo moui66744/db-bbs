@@ -23,8 +23,8 @@
         <div class="w3-dropdown-hover w3-hide-small">
             <div class="w3-padding-large w3-button" title="More">更多 <i class="fa fa-caret-down"></i></div>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="#" class="w3-bar-item w3-button">修改密码</a>
-                <a href="#" class="w3-bar-item w3-button">修改邮箱</a>
+                <a href="changePsw.jsp" class="w3-bar-item w3-button">修改密码</a>
+                <a href="changeEma.jsp" class="w3-bar-item w3-button">修改邮箱</a>
             </div>
         </div>
         <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zakia
-  Date: 2021/10/6
-  Time: 16:26
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -62,30 +55,32 @@
         <p></p>
     </div>
     <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="display:flex;align-items:center;max-width:800px;height:500px;margin-top: 40px;flex-direction: column">
-        <h1 class="w3-wide" style="height: 100px;opacity: unset">登 录</h1>
+        <h1 class="w3-wide" style="height: 100px;opacity: unset">修改密码</h1>
 
         <form id="loginForm" action="GetUserByNameAndPwdServlet.do" method="post" style="width: 400px;display: flex;align-items: center;flex-direction: column">
-            <p style="align-self: flex-start">用户名</p>
-            <input class="w3-input" name="userName" style="max-width: 400px" type="text" placeholder="用户名"/>
-            <p style="align-self: flex-start">密码</p>
-            <input class="w3-input" name="userPwd" style="max-width: 400px" type="password" placeholder="密码" />
+            <p style="align-self: flex-start">新密码</p>
+            <input id="newPwd" class="w3-input" name="newPwd" style="max-width: 400px" type="password" placeholder="新密码" />
 
         </form>
         <div class="buttonItems" style="width: 500px;margin-top: 50px;opacity: unset">
-            <button class="w3-button w3-black za-button" onclick="javascript:location.href='register.jsp'">没有帐号，注册</button>
-            <button class="w3-button w3-black za-button" onclick=submitLoginInfo()>确认登录</button>
+            <button class="w3-button w3-black za-button" onclick=changePassword()>确认修改</button>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function submitLoginInfo(){
-            if (loginForm.userName.value === ""){
-                alert("请填写用户名");
-            }
-            else if (loginForm.userPwd.value === ""){
-                alert("请填写密码");
-            }
-            else
-                document.getElementById("loginForm").submit();
+        function changePassword(){
+            $.ajax({
+                type:"POST",
+                url:"ChangePwdByUserIdServlet.do",
+                data:{
+                    newPwd : $("#newPwd").val()
+                },
+                dataType:"text",
+                success:function (res){
+                    if (res === "1") window.location.href = "login.jsp"
+                    else alert("修改失败")
+                }
+            });
         }
     </script>
 

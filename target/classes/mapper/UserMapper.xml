@@ -36,4 +36,12 @@
     <insert id="insertFavorite">
         insert into favorite values(#{postId}, #{userId});
     </insert>
+
+    <update id="ChangePwd">
+        update user set password = #{newPwd} where user_id = #{userId}
+    </update>
+
+    <update id="ChangeMail">
+        update user set email = #{newEma} where user_id = #{userId}
+    </update>
 </mapper>

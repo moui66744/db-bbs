@@ -46,4 +46,22 @@ public class UserServiceImpl implements UserService{
         sqlSession.commit();
         return res;
     }
+
+    @Override
+    public int ChangePwd(int userId, String pwd) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int res = mapper.ChangePwd(userId, pwd);
+        sqlSession.commit();
+        return res;
+    }
+
+    @Override
+    public int ChangeMail(int userId, String ema) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        int res = mapper.ChangeMail(userId, ema);
+        sqlSession.commit();
+        return res;
+    }
 }
