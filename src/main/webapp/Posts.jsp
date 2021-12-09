@@ -65,13 +65,13 @@
     <h2 class="w3-wide" style="margin-bottom: 40px"><b>${topic}</b></h2>
 
         <c:forEach items="${allPost}" var="Post" varStatus="status">
-        <div class="w3-card w3-white w3-content w3-container w3-padding-32 topic_button" style="width:700px;display: flex;flex-direction:column;align-items: baseline" >
+        <div class="w3-card w3-white w3-content w3-container w3-padding-32 " style="width:700px;display: flex;flex-direction:column;align-items: baseline" >
             <p class="w3-justify " style="font-size:larger;" ><b>${Post.title}</b></p>
             <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
             <div class="w3-justify">${Post.context.length()>100?(Post.context.substring(0,100)):Post.context}
                 ...</div>
             <div><p/></div>
-            <button id="${Post.postId}" class="w3-button w3-black">Read More</button>
+            <button id="${Post.postId}" class="topic-button w3-button w3-black">Read More</button>
         </div>
         <div class="w3-content w3-container w3-padding-32" style="max-width:800px;" id="post1">
             <p/>
@@ -98,7 +98,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $("topic-button").click(function (){
+    $(".topic-button").click(function (){
         window.location.href='GetPostAndCommentAndUserByPostIdServlet.do?postId='+this.id;
     })
 </script>
