@@ -35,6 +35,7 @@ public class GetAllPostByTopicIdServlet extends HttpServlet {
         System.out.println(topic);
         assert topic != null;
         request.setAttribute("topic", topic.getTopicName());
+        request.setAttribute("topicId",topic.getTopicId());
         request.setAttribute("allPost", allPost);
         request.getRequestDispatcher("Posts.jsp").forward(request,response);
     }

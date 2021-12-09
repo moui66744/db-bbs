@@ -65,7 +65,7 @@
     <h2 class="w3-wide" style="margin-bottom: 40px"><b>${topic}</b></h2>
 
         <c:forEach items="${allPost}" var="Post" varStatus="status">
-        <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" >
+        <div class="w3-card w3-white w3-content w3-container w3-padding-32 topic_button" style="width:700px;display: flex;flex-direction:column;align-items: baseline" >
             <p class="w3-justify " style="font-size:larger;" ><b>${Post.title}</b></p>
             <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
             <div class="w3-justify">${Post.context.length()>100?(Post.context.substring(0,100)):Post.context}
@@ -77,9 +77,19 @@
             <p/>
         </div>
     </c:forEach>
+        <h2>发表帖子</h2>
+        <form id="CommentForm" action="InsertNewPostServlet.do" method="post" style="width: 400px;display: flex;align-items: center;flex-direction: column">
+            <input type="text" class="w3-input" name="title" style="width: 700px" placeholder="填写标题"/>
+            <p/>
+            <textarea class="w3-input" name="context" style="max-width: 700px;width:700px;height:200px" type="text" placeholder="帖子内容" ></textarea>
+            <input type="hidden" name="topicId" value="${topicId}"/>
+            <input type="hidden" name="userId" value="${user.userId}">
+        </form>
+        <button class="w3-button w3-black" onclick="submitComment()">发布帖子</button>
     </div>
 
-    </div>
+
+</div>
 
 
 </div>
@@ -88,11 +98,15 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $("button").click(function (){
+    $("topic-button").click(function (){
         window.location.href='GetPostAndCommentAndUserByPostIdServlet.do?postId='+this.id;
     })
 </script>
-
+<script>
+function submitComment(){
+    document.getElementById("CommentForm").submit();
+}
+</script>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
