@@ -16,7 +16,6 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.apache.ibatis:ibator:1.2.1.681" />
-          <element id="library" level="project" name="Maven: org.apache:apache:11" />
         </element>
       </element>
       <element id="directory" name="META-INF">

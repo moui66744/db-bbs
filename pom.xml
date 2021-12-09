@@ -65,11 +65,6 @@
             <artifactId>ibator</artifactId>
             <version>1.2.1.681</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache</groupId>
-            <artifactId>apache</artifactId>
-            <version>11</version>
-        </dependency>
     </dependencies>
 
     <build>
