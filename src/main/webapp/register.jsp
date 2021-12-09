@@ -47,7 +47,7 @@
         <a href="#" class="w3-bar-item w3-button w3-padding-large">主页</a>
         <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的贴子</a>
         <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">我的收藏</a>
-        <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">个人中心</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="display: none">个人中心</a>
         <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">更多 <i class="fa fa-caret-down"></i></button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
