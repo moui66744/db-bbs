@@ -98,7 +98,7 @@
             <p class="w3-opacity" ><i>${Comment.commentTime}</i>   <i>${Comment.user.userName}</i></p>
             <pre class="w3-justify">${Comment.context}</pre>
             <div><p/></div>
-            <button class="w3-button w3-black" onclick="addCommet(this)" id="CommentButton${Comment.commentId}">回复</button>
+            <button class="w3-button w3-black" onclick="addComment(this)" id="CommentButton${Comment.commentId}">回复</button>
 
         </div>
     <hr>
@@ -115,11 +115,10 @@
     function addCommentInput(){
         alert("focus")
     }
-    function addCommet(p){
-        if (p == null){
+    function addComment(p){
+        if (p == null) {
             alert("No father")
         }
-        alert(p.parentNode.id)
         var form = document.createElement("form");
         form.id = p.parentNode.id + "form"
         form.method = "post"

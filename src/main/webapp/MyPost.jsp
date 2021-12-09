@@ -64,7 +64,7 @@
     <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center">
     <h2 class="w3-wide" style="margin-bottom: 40px"><b>${user.userName}</b></h2>
 
-        <c:forEach items="${PostsOfMine}" var="Post" varStatus="status">
+    <c:forEach items="${PostsOfMine}" var="Post" varStatus="status">
         <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
             <p class="w3-justify " style="font-size:larger;" ><b>${Post.title}</b></p>
             <p class="w3-opacity" ><i>${Post.postTime}</i>   <i>${Post.author.userName}</i></p>
