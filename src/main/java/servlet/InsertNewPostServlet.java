@@ -43,7 +43,7 @@ public class InsertNewPostServlet extends HttpServlet {
 
         PostServiceImpl postService = new PostServiceImpl();
         int res = postService.insertNewPost(post);
-//        request.getRequestDispatcher("MyPost.jsp").forward(request,response);
+        request.getRequestDispatcher("GetAllPostByTopicIdServlet.do?topicId="+topicId).forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
