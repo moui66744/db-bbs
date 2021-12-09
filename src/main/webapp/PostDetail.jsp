@@ -62,11 +62,14 @@
 <div>
     <div class="w3-container w3-content w3-center w3-padding-64w3-white"><p/></div>
     <div class="region w3-container w3-content w3-center w3-padding-64 w3-card w3-white " style="width:800px;height:auto;margin-top:40px;flex-direction: column;display: flex;align-items:center">
-
+    <div id="postId" style="display: none">${post.postId}</div>
+    <div id="userId" style="display: none">${user.userId}</div>
     <div class="w3-card w3-white w3-content w3-container w3-padding-32" style="width:700px;display: flex;flex-direction:column;align-items: baseline" id="$post{Post.postId}">
         <p class="w3-justify " style="font-size:larger;" ><b>${post.title}</b></p>
         <p class="w3-opacity" ><i>${post.postTime}</i>   <i>${post.author.userName}</i></p>
         <pre class="w3-justify">${post.context}</pre>
+        <div><p/></div>
+        <button id="insertFavorite" class="w3-button w3-black" onclick="InsertFavorite()">收藏此贴</button>
         <div><p/></div>
     </div>
     <HR align=center width=600 color=#AAAAAA SIZE=3>
@@ -111,7 +114,23 @@
 <div class="w3-container w3-content w3-center w3-padding-64" >
     <p></p>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    function InsertFavorite(){
+        $.ajax({
+            type:"POST",
+            url:"InsertFavoriteServlet.do",
+            data:{
+                userId: $("#userId").html(),
+                postId: $("#postId").html()
+            },
+            dataType:"text",
+            success:function (res){
+                if (res === '1') $("#insertFavorite").html("已收藏")
+            }
+        });
+    }
+
     function addCommentInput(){
         alert("focus")
     }
