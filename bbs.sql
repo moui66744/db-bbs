@@ -86,7 +86,8 @@ CREATE TABLE `comment` (
   `comment_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`comment_id`),
   FOREIGN KEY (`post_id`) REFERENCES `post`(`post_id`) ON DELETE CASCADE,
-  FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`) ON DELETE SET NULL
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`) ON DELETE SET NULL,
+  FOREIGN KEY (`reply_id`) REFERENCES `comment`(`comment_id`) ON DELETE CASCADE,
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -105,6 +106,7 @@ INSERT INTO `comment` VALUES ('6', null, '1', '4', '评论3', '2021-10-07 00:00:
 CREATE TABLE `favorite` (
   `post_id` int DEFAULT NULL,
   `user_id` int DEFAULT NULL,
+  `time` datetime DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`post_id`) REFERENCES `post`(`post_id`) ON DELETE SET NULL,
   FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
