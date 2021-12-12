@@ -1,6 +1,7 @@
 package bean;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Comment {
     private int commentId;
@@ -8,7 +9,8 @@ public class Comment {
     private User user;
     private String context;
     private String commentTime;
-    private Comment replyComment;
+    private Comment supComment;
+    private ArrayList<Comment> subComment;
 
     @Override
     public String toString() {
@@ -18,7 +20,8 @@ public class Comment {
                 ", user=" + user +
                 ", context='" + context + '\'' +
                 ", commentTime='" + commentTime + '\'' +
-                ", replyComment=" + replyComment +
+                ", supComment=" + supComment +
+                ", subComment=" + subComment +
                 '}';
     }
 
@@ -62,11 +65,19 @@ public class Comment {
         this.commentTime = commentTime;
     }
 
-    public Comment getReplyComment() {
-        return replyComment;
+    public Comment getSupComment() {
+        return supComment;
     }
 
-    public void setReplyComment(Comment replyComment) {
-        this.replyComment = replyComment;
+    public void setSupComment(Comment supComment) {
+        this.supComment = supComment;
+    }
+
+    public ArrayList<Comment> getSubComment() {
+        return subComment;
+    }
+
+    public void setSubComment(ArrayList<Comment> subComment) {
+        this.subComment = subComment;
     }
 }

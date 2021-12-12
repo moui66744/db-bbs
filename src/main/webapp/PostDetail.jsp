@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
     <title>我的帖子</title>
@@ -100,9 +101,16 @@
             <p class="w3-justify " style="font-size:larger;" ><b>reply to ${post.title}</b></p>
             <p class="w3-opacity" ><i>${Comment.commentTime}</i>   <i>${Comment.user.userName}</i></p>
             <pre class="w3-justify">${Comment.context}</pre>
+            <c:if test="${Comment.subComment != null || fn:length(Comment.subComment) != 0}">
+                <c:forEach items="${Comment.subComment}" var="subComment" varStatus="status">
+                    <div style="border-left: 5px solid #d6d6d6; padding-left: 20px; border-bottom: dashed #d6d6d6">
+                        <p class="w3-opacity" ><i>${subComment.commentTime}</i>   <i>${subComment.user.userName}</i></p>
+                        <pre class="w3-justify">${subComment.context}</pre>
+                    </div>
+                </c:forEach>
+            </c:if>
             <div><p/></div>
             <button class="w3-button w3-black" onclick="addComment(this)" id="CommentButton${Comment.commentId}">回复</button>
-
         </div>
     <hr>
     </c:forEach>

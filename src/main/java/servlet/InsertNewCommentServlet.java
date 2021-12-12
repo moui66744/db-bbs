@@ -33,9 +33,9 @@ public class InsertNewCommentServlet extends HttpServlet {
 
         Comment comment = new Comment();
         if (replyId != 0) {
-            Comment replyComment = new Comment();
-            replyComment.setCommentId(replyId);
-            comment.setReplyComment(replyComment);
+            Comment supComment = new Comment();
+            supComment.setCommentId(replyId);
+            comment.setSupComment(supComment);
         }
         comment.setPostId(postId);
         comment.setUser(user);

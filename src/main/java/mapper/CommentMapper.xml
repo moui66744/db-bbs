@@ -10,24 +10,22 @@
         <collection property="user" ofType="User" autoMapping="true">
             <id column="user_id" property="userId"/>
         </collection>
-        <collection property="replyComment" ofType="Comment" autoMapping="true">
-            <id column="comment_id" property="commentId"/>
-        </collection>
     </resultMap>
     <select id="getAllCommentAndUserByPostId" resultMap="comment_user">
-        select * from comment a
-              left join comment b
-                    on a.comment_id = b.reply_id
-              left join user c
-                     on a.user_id = c.user_id
-              left join user d
-                     on b.user_id = d.user_id
-        where a.post_id = #{postId};
+        select * from comment, user
+            where comment.post_id = #{postId} and
+                  comment.user_id = user.user_id and
+                  comment.reply_id is null
+    </select>
+    <select id="getSubCommentByCommentId" resultMap="comment_user">
+        select * from comment, user
+            where comment.reply_id = #{commentId} and
+                  comment.user_id = user.user_id
     </select>
     <insert id="insertNewComment" parameterType="Comment">
         insert into comment values (
             null,
-            #{comment.replyComment.commentId},
+            #{comment.supComment.commentId},
             #{comment.postId},
             #{comment.user.userId},
             #{comment.context},

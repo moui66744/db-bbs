@@ -14,7 +14,19 @@ public class CommentServiceImpl implements CommentService{
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
         ArrayList<Comment> allComment = mapper.getAllCommentAndUserByPostId(postId);
+        for (Comment comment :
+                allComment) {
+            ArrayList<Comment> subComment = getSubCommentByCommentId(comment.getCommentId());
+            comment.setSubComment(subComment);
+        }
         return allComment;
+    }
+
+    private ArrayList<Comment> getSubCommentByCommentId(int commentId) {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
+        ArrayList<Comment> subComment = mapper.getSubCommentByCommentId(commentId);
+        return subComment;
     }
 
     @Override

@@ -7,5 +7,6 @@ import java.util.ArrayList;
 
 public interface CommentMapper {
     ArrayList<Comment> getAllCommentAndUserByPostId(int postId);
+    ArrayList<Comment> getSubCommentByCommentId(int commentId);
     int insertNewComment(@Param("comment") Comment comment);
 }

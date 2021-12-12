@@ -95,10 +95,10 @@ CREATE TABLE `comment` (
 -- ----------------------------
 INSERT INTO `comment` VALUES ('1', null, '1', '1', '评论1', '2021-10-07 00:00:00');
 INSERT INTO `comment` VALUES ('2', null, '1', '2', '评论2', '2021-10-07 00:00:00');
-INSERT INTO `comment` VALUES ('3', '1', '1', '3', '评论1的评论', '2021-10-07 00:00:00');
+INSERT INTO `comment` VALUES ('3', '1', '1', '3', '评论1的评论1', '2021-10-07 00:00:00');
 INSERT INTO `comment` VALUES ('4', '2', '1', '4', '评论2的评论', '2021-10-07 00:00:00');
-INSERT INTO `comment` VALUES ('5', '3', '1', '4', '评论1的评论的评论', '2021-10-07 00:00:00');
-INSERT INTO `comment` VALUES ('6', null, '1', '4', '评论3', '2021-10-07 00:00:00');
+INSERT INTO `comment` VALUES ('5', null, '1', '4', '评论3', '2021-10-07 00:00:00');
+INSERT INTO `comment` VALUES ('6', '1', '1', '3', '评论1的评论2', '2021-10-07 00:00:00');
 
 -- ----------------------------
 -- Table structure for favorite
